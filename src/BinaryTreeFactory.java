@@ -20,4 +20,5 @@ public class BinaryTreeFactory {
 			return new SplayTree<K, V>();
 		}
 	}
+	
 }
