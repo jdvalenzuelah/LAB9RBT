@@ -55,6 +55,38 @@ public class BinaryTree<K extends Comparable<K>, V> {
 	}
 	
 	/**
+	 * Insertar un nuevo nodo al arbol
+	 * @param n nuevo nodo a insertar
+	 */
+	public void insertar(Nodo<K,V> n) {
+		if (raiz==null) {
+			raiz=n;
+		}	
+		else {
+			 Nodo<K, V> actual = raiz;
+			 Nodo<K, V> padre;
+			 boolean flag = true;
+			 while(flag) {
+				 padre = actual;
+				 int comparacion = actual.valor.compareTo(n.getValor().getTheKey());
+				 if(comparacion > 0) {
+					 actual = actual.izq;
+					 if(actual == null) {
+						 padre.izq = n;
+						 flag = false;
+					 }
+				 }else {
+					 actual = actual.der;
+					 if(actual == null) {
+						 padre.der = n;
+						 flag = false;
+					 }
+				 }
+			 }
+		}
+	}
+	
+	/**
 	 * Buscar un valor en el arbol a partir de la llave
 	 * @param llave
 	 * @return
@@ -84,6 +116,14 @@ public class BinaryTree<K extends Comparable<K>, V> {
 			System.out.println(raiz.valor);
 			inOrder(raiz.der);
 		}
+	}
+	
+	/**
+	 * Obtener el padre del nodo
+	 * @return padre del nodo
+	 */
+	public Nodo<K, V> getPadre(){
+		return this.raiz;
 	}
 	
 	/**
@@ -143,6 +183,14 @@ public class BinaryTree<K extends Comparable<K>, V> {
 		public Association<L, C> getValor(){
 			return this.valor;
 		}
+
+		/**
+		 * @param valor the valor to set
+		 */
+		public void setValor(Association<L, C> valor) {
+			this.valor = valor;
+		}
+		
 		
 	}
 
