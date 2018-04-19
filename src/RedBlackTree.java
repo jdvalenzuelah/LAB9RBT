@@ -24,6 +24,7 @@ public class RedBlackTree<K extends Comparable<K>, V> extends BinaryTree<K, V> {
 		NodoRB<K, V > nodo = put((RedBlackTree<K, V>.NodoRB<K, V>) raiz, key, valor);
 		nodo.setColor(false);
 		raiz = nodo;
+		size++;
 		
 	}
 	

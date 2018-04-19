@@ -41,9 +41,12 @@ public class Main {
 		try {
 			// Leer el archivo con diccionario
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine(); // Omitimos la primera linea del archivo
 			while((line = reader.readLine()) != null) {
-				line = line.substring(1, line.length() - 1); // Remover los parentesis
-				String[] kv = line.split(", "); // Separar los valores
+				line = line.toLowerCase(); // All lowercase
+				if(line.indexOf(";") > -1) line = line.substring(0, line.indexOf(";")); // Omitinos multiples traducciones
+				if(line.indexOf(",") > -1) line = line.substring(0, line.indexOf(","));
+				String[] kv = line.split("	"); // Separar los valores
 				arbol.insertar(kv[0], kv[1]); //agregar los valores al arbol
 			}
 			reader.close(); // Cerramos el archivo
@@ -61,7 +64,7 @@ public class Main {
 		try {
 			// Leer el archivo con el texto
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
-			line = reader.readLine(); // Leer la primera linea
+			line = reader.readLine().toLowerCase(); // Leer la primera linea
 			line = line.substring(0, line.length() -1); // Removemos el punto
 			reader.close(); // Cerramos el archivo
 		} catch (Exception e) {
@@ -77,6 +80,11 @@ public class Main {
 		
 	}
 	
+	/**
+	 * @param textoIngles
+	 * @param traducciones
+	 * @return
+	 */
 	public static String traducirTexto(String textoIngles, BinaryTree<String, String> traducciones) {
 		String palabraIngles, palabraEspa;
 		String textoEspa = "";

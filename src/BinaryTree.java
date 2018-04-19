@@ -12,12 +12,27 @@ public class BinaryTree<K extends Comparable<K>, V> {
 	 */
 	protected Nodo<K,V> raiz;
 	
+	/**
+	 * size del arbol
+	 */
+	protected int size;
 	
+	
+	
+	
+	/**
+	 * @return the size
+	 */
+	public int getSize() {
+		return size;
+	}
+
 	/**
 	 * Constructorde la clase
 	 */
 	public BinaryTree(){
 		raiz = null;
+		size = 0;
 	}
 	
 	/**
@@ -52,6 +67,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
 				 }
 			 }
 		}
+		size++;
 	}
 	
 	/**
@@ -84,10 +100,11 @@ public class BinaryTree<K extends Comparable<K>, V> {
 				 }
 			 }
 		}
+		size++;
 	}
 	
 	/**
-	 * Buscar un valor en el arbol a partir de la llave
+	 * Buscar un valor en el arboSl a partir de la llave
 	 * @param llave
 	 * @return
 	 */
