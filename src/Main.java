@@ -57,7 +57,7 @@ public class Main {
 		
 		System.out.println("Ingrese ruta del texto a traducir: ");
 		filePath = sc.nextLine();
-		//sc.close();
+		sc.close();
 		
 		/* Abrir el textoa traducir */
 		try {
@@ -75,9 +75,6 @@ public class Main {
 		/* Mostrar texto Traducido */
 		System.out.println("Texto traducido: \n");
 		System.out.println(traducirTexto(line, arbol));
-		
-		sc.nextLine();
-		sc.close();
 		
 	}
 	
